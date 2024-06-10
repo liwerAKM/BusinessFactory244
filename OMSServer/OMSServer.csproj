@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PaaS.Comm">
+      <HintPath>..\PaaS.Comm\bin\Debug\netcoreapp3.1\PaaS.Comm.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

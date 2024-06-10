@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+	  <!-- 连接字符串是否加密 -->
+	  <add key="ConStringEncrypt" value="true" />
+	  <add key="ConnectionStringMySpringMySQL" value="Host=172.18.0.220;port=3306;UserName=root;Password='AC8A347073110006';Database=myspringpaas;character set=utf8;pooling=true;ssl-mode=none"/>
+	  <add key="ConnectionStringPlatZZJ"  value="Host=172.18.0.220;port=3306;UserName=root;Password=AC8A347073110006;Database=platzzj;character set=utf8;pooling=true;ssl-mode=none"/>
+	  <add key="ConnectionStringMySpringlogMySQL" value="Host=172.18.0.220;UserName=root;Password=AC8A347073110006;Database=myspringlog;character set=utf8;pooling=true;port=3306;ssl-mode=none"/>
+	  <add key="ConnectionStringLogMySQL" value="Host=172.18.0.220;UserName=root;Password=AC8A347073110006;Database=buslog;character set=utf8;port=3306;ssl-mode=none"/>
+
+	  <!-- MYSQL连接地址 此处是为测试对应函数用的，BusinessFactory自身不需要 -->
+	  <!-- 
+    <add key="ConnectionString"  value="Host=172.18.0.220;UserName=root;Password=AC8A347073110006;Database=platform;character set=utf8;port=3306;ssl-mode=none"/>
+    <add key="ConnectionStringPlatZZJ" value="Host=172.18.0.220;UserName=root;Password=AC8A347073110006;Database=platzzj;character set=utf8;port=3306;ssl-mode=none"/>
+	-->
+    <!-- ##########################AliPay交易发送地址配置#############################-->
+    <!-- 支付宝网关地址（新） -->
+    <add key="AliPay.GATEWAY_NEW" value="https://mapi.alipay.com/gateway.do?" />
+    <!-- 支付宝网关地址（刷脸） -->
+    <add key="AliPay.GATEWAY_NEW_ZOLO" value="https://openapi.alipay.com/gateway.do" />
+    <!-- 收款页面跳转同步通知页面地址 -->
+    <add key="AliPay.Return_url" value="http://58.216.151.158:90/QHWebServiceZZYModel/AliPay/return_url.aspx" />
+    <!-- 收款服务器异步通知页面地址 必须外网能访问-->
+    <add key="AliPay.Notify_url" value="http://58.216.151.158:90/QHWebServiceZZYModel/AliPay/notify_url.aspx" />
+    <!-- 前台通知地址，必须外网能访问 -->
+    <add key="AliPay.Notify_urlUndo" value="http://58.216.151.158:90/QHWebServiceZZYModel/AliPay/notify_urlUndo.aspx" />
+    <!-- 支付宝 用户 授权回调地址 -->
+    <add key="AliPay.Redirect_uri" value="http://fbo.ztejsapp.cn/SLB/Notify/AliAuthcode" />
+    <!-- 启航支付宝 用户认证 APIUrl 地址 -->
+    <add key="AliPay.qhAuthAPI_uri" value="http://fbo.ztejsapp.cn/S/" />
+
+
+    <!-- ##########################WxPay交易发送地址配置#############################-->
+    <!-- 收款服务器异步通知页面地址 必须外网能访问-->
+    <!--<add key="WxPay.Notify_url" value="http://58.216.151.158:9801/WxPay/BackRcvWxPay.aspx" />-->
+    <add key="WxPay.Notify_url" value="https://fbo.ztejsapp.cn/test/server/WxPay/BackRcvWxPay.aspx" />
+    <!--商户系统后台机器IP-->
+    <add key="WxPay.IP" value="58.216.151.158" />
+
+  </appSettings>
+</configuration>

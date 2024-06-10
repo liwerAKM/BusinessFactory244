@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\A0Public</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BusinessFactory.exe.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SqlSugarCore" Version="5.0.4.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BusinessInterface\BusinessInterface.csproj" />
+    <ProjectReference Include="..\..\DB.Core\DB.Core.csproj" />
+    <ProjectReference Include="..\..\EncryptionKeyCore\EncryptionKeyCore.csproj" />
+    <ProjectReference Include="..\..\Log.Core\Log.Core.csproj" />
+    <ProjectReference Include="..\..\OnlineBusHos244\OnlineBusHos244_Common\OnlineBusHos244_Common.csproj" />
+    <ProjectReference Include="..\..\OnlineBusHos244\OnlineBusHos244_EInvoice\OnlineBusHos244_EInvoice.csproj" />
+    <ProjectReference Include="..\..\OnlineBusHos244\OnlineBusHos244_GJYB\OnlineBusHos244_GJYB.csproj" />
+    <ProjectReference Include="..\..\OnlineBusHos244\OnlineBusHos244_OutHos\OnlineBusHos244_OutHos.csproj" />
+    <ProjectReference Include="..\..\OnlineBusHos244\OnlineBusHos244_Report\OnlineBusHos244_Report.csproj" />
+    <ProjectReference Include="..\..\OnlineBusHos244\OnlineBusHos244_Tran\OnlineBusHos244_Tran.csproj" />
+    <ProjectReference Include="..\..\OnlineBusHos244\OnlineBusHos244_YYGH\OnlineBusHos244_YYGH.csproj" />
+    <ProjectReference Include="..\..\OnlineBusHos\OnlineBusHos_Common\OnlineBusHos_Common.csproj" />
+    <ProjectReference Include="..\..\PaaS.Comm\PaaS.Comm.csproj" />
+    <ProjectReference Include="..\..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+    <ProjectReference Include="..\..\Soft.Core\Soft.Core.csproj" />
+    <ProjectReference Include="..\..\ZZJ_Common\ZZJ_Common.csproj" />
+    <ProjectReference Include="..\BusinessTest\BusinessTest.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Alipay.AopSdk.Core">
+      <HintPath>..\..\A0Public\netcoreapp3.1\Alipay.AopSdk.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="F2FPayDll">
+      <HintPath>..\..\A0Public\netcoreapp3.1\F2FPayDll.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\A0Public\netcoreapp3.1\MySql.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

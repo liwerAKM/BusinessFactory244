@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <FileVersion>1.0.1025.1556</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\A0Public</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SqlSugarCore" Version="5.0.4.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessInterface\BusinessInterface.csproj" />
+    <ProjectReference Include="..\Soft.Core\Soft.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Alipay.AopSdk.Core">
+      <HintPath>..\A0Public\netcoreapp3.1\Alipay.AopSdk.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AopSdk">
+      <HintPath>..\A0Public\netcoreapp3.1\AopSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="F2FPayDll">
+      <HintPath>..\A0Public\netcoreapp3.1\F2FPayDll.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,46 @@
+﻿<Window x:Class="BusinessFactory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BusinessFactory"
+        mc:Ignorable="d"
+        Title="自助机业务测试(仅供开发使用)" Height="800" Width="1200">
+    <Grid Background="#FFB4CCE0" Cursor="">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="164*"/>
+            <ColumnDefinition Width="653*"/>
+            <ColumnDefinition Width="128*"/>
+            <ColumnDefinition Width="152*"/>
+            <ColumnDefinition Width="103*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid AutoGenerateColumns="False" Margin="0,21,12,348" x:Name="dgvbus"  Width="Auto" Height="400" FontWeight="Normal" FontSize="16" IsReadOnly="True" SelectionChanged="dgvbus_SelectionChanged" PreviewMouseDoubleClick="dgvbus_PreviewMouseDoubleClick" Grid.ColumnSpan="5">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn x:Name="CLocal_pref" Header="本地优先"  Width ="80" Binding="{Binding Local_pref}" />
+                <DataGridCheckBoxColumn x:Name="jzgx" Header="业务文件"  Width ="100" Binding="{Binding isdirect}"  Visibility= "Hidden"  />
+                <DataGridTextColumn x:Name="CName" Header="类名"  Width ="180" Binding="{Binding Name}"   />
+                <DataGridTextColumn x:Name="CBusID" Header="BusID"  Width ="150" Binding="{Binding BusID}"   />
+                <DataGridTextColumn x:Name="CFilename1" Header="DLL名称"  Width ="250" Binding="{Binding Filename}"   />
+                <DataGridTextColumn x:Name="CFullName" Header="FullName"  Width ="200" Binding="{Binding FullName}"   />
+                <DataGridTextColumn x:Name="CVersion1" Header="版本号"  Width ="100" Binding="{Binding Version}"   />
+                <DataGridTextColumn x:Name="CNote" Header="Note"  Width ="100" Binding="{Binding Note }"   />
+                <DataGridTextColumn x:Name="CFilePath1" Header="文件路径"  Width ="100" Binding="{Binding FilePath}"   />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_test" Content="调用" HorizontalAlignment="Left" Margin="211,483,0,0" VerticalAlignment="Top" Click="btn_test_Click" Grid.Column="1" RenderTransformOrigin="-0.215,0.443"/>
+        <TextBlock x:Name="txtFullName" HorizontalAlignment="Left" Margin="111,448,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="328" Background="White" Grid.ColumnSpan="2"/>
+        <Label Content="业务类名:" HorizontalAlignment="Left" Margin="43,443,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.145,-1.766"/>
+        <Label Content="入参" HorizontalAlignment="Left" Margin="13,510,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.145,-1.766"/>
+        <Label Content="SubBusID:" HorizontalAlignment="Left" Margin="60,500,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.145,-1.766"/>
+        <TextBox x:Name="txt_TestParam"  HorizontalAlignment="Left" Margin="13,0,0,0" Text="" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" VerticalAlignment="Bottom" Width="396" Height="243" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txt_TestOut" HorizontalAlignment="Left" Margin="304,0,0,0" Text="" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" VerticalAlignment="Bottom" Width="355" Height="285" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <TextBox x:Name="txt_log" HorizontalAlignment="Left" Margin="41,477,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="310" Height="298" IsEnabled="False" Grid.Column="2" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="txt_SubBusID" HorizontalAlignment="Left" Margin="152,502,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="190" Background="White" Grid.ColumnSpan="2"/>
+        <CheckBox x:Name="chbStartBusServer" Content="连接SLB(连接上CallOtherBusiness可调用已经发布的函数)" HorizontalAlignment="Left" Margin="92,4,0,0" VerticalAlignment="Top" IsChecked="True" Grid.ColumnSpan="2"/>
+        <CheckBox x:Name="chbLocal_pref" Content="CallOtherBusiness中优先调用本地函数(双击行单独修改)" HorizontalAlignment="Left" Margin="379,6,0,0" VerticalAlignment="Top" IsChecked="True" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <RadioButton x:Name ="RB_SLBbus" Content="SLBBusinessInfo" HorizontalAlignment="Left" Margin="25,483,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton x:Name ="RB_byte" Content="二进制" HorizontalAlignment="Left" Margin="11,483,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.993,0.265" Grid.Column="1"/>
+        <RadioButton x:Name ="RB_InputRoot" Content="InputRoot" HorizontalAlignment="Left" Margin="81,484,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.993,0.265" Grid.Column="1"/>
+    </Grid>
+
+</Window>

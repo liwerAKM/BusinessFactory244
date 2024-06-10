@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <FileVersion>1.0.2304.2504</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\A0Public</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessInterface\BusinessInterface.csproj" />
+    <ProjectReference Include="..\Log.Core\Log.Core.csproj" />
+    <ProjectReference Include="..\Soft.Core\Soft.Core.csproj" />
+  </ItemGroup>
+
+</Project>

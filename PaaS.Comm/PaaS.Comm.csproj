@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SuperSocket" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.Channel" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.Client" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.Client.Proxy" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.Command" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.Http" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.Primitives" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.ProtoBase" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.Server" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.SessionContainer" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.Udp" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.WebSocket" Version="2.0.0-beta.10" />
+    <PackageReference Include="SuperSocket.WebSocket.Server" Version="2.0.0-beta.10" />
+    <PackageReference Include="WebSocket4Net" Version="0.15.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessInterface\BusinessInterface.csproj" />
+    <ProjectReference Include="..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+  </ItemGroup>
+
+</Project>

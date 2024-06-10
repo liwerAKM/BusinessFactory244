@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <FileVersion>1.0.2305.1801</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SqlSugarCore" Version="5.0.4.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BusinessInterface\BusinessInterface.csproj" />
+    <ProjectReference Include="..\..\Log.Core\Log.Core.csproj" />
+    <ProjectReference Include="..\..\Soft.Core\Soft.Core.csproj" />
+  </ItemGroup>
+
+</Project>

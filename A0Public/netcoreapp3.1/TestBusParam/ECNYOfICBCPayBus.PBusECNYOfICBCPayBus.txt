@@ -1,0 +1,1 @@
+﻿{ "CLIENT_ID": "1002", "JE": 0.01, "ORDER_DESC": "门诊挂号|测试|admin&1", "COMM_HIS": "20230423100112123", "PAY_TYPE":"201" }

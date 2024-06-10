@@ -1,0 +1,64 @@
+2022年6月20日15:50:05 logQHZZJ:System.TypeInitializationException: The type initializer for 'Log.Core.MySQLDAL.DbHelperMySQL' threw an exception.
+ ---> System.Configuration.ConfigurationErrorsException: Configuration system failed to initialize
+ ---> System.Configuration.ConfigurationErrorsException: An XML comment cannot contain '--', and '-' cannot be the last character. Line 16, position 7. (E:\工作\01QHPlatform\01平台服务\PaaSZZJ\A0Public\netcoreapp3.1\BusinessFactory.dll.config line 16)
+ ---> System.Xml.XmlException: An XML comment cannot contain '--', and '-' cannot be the last character. Line 16, position 7.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseCDataOrComment(XmlNodeType type, Int32& outStartPos, Int32& outEndPos)
+   at System.Xml.XmlTextReaderImpl.ParseCDataOrComment(XmlNodeType type)
+   at System.Xml.XmlTextReaderImpl.ParseComment()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlTextReader.Read()
+   at System.Configuration.XmlUtil.CopyXmlNode(XmlUtilWriter utilWriter)
+   at System.Configuration.XmlUtil.CopyElement(XmlUtilWriter utilWriter)
+   at System.Configuration.XmlUtil.CopySection()
+   at System.Configuration.BaseConfigurationRecord.ScanSectionsRecursive(XmlUtil xmlUtil, String parentConfigKey, Boolean inLocation, String locationSubPath, OverrideModeSetting overrideMode, Boolean skipInChildApps)
+   at System.Configuration.BaseConfigurationRecord.ScanSections(XmlUtil xmlUtil)
+   at System.Configuration.BaseConfigurationRecord.InitConfigFromFile()
+   --- End of inner exception stack trace ---
+   at System.Configuration.ConfigurationSchemaErrors.ThrowIfErrors(Boolean ignoreLocal)
+   at System.Configuration.BaseConfigurationRecord.ThrowIfParseErrors(ConfigurationSchemaErrors schemaErrors)
+   at System.Configuration.BaseConfigurationRecord.ThrowIfInitErrors()
+   at System.Configuration.ClientConfigurationSystem.EnsureInit(String configKey)
+   --- End of inner exception stack trace ---
+   at System.Configuration.ConfigurationManager.PrepareConfigSystem()
+   at System.Configuration.ConfigurationManager.GetSection(String sectionName)
+   at System.Configuration.ConfigurationManager.get_AppSettings()
+   at Log.Core.MySQLDAL.DbHelperMySQL.get_ConnectionStringMySQL() in E:\工作\01QHPlatform\01平台服务\PaaSZZJ\Log.Core\MySQLDAL\DbHelperMySQL.cs:line 25
+   at Log.Core.MySQLDAL.DbHelperMySQL..cctor() in E:\工作\01QHPlatform\01平台服务\PaaSZZJ\Log.Core\MySQLDAL\DbHelperMySQL.cs:line 39
+   --- End of inner exception stack trace ---
+   at Log.Core.MySQLDAL.DbHelperMySQL.ExecuteSql(String SQLString, MySqlParameter[] cmdParms) in E:\工作\01QHPlatform\01平台服务\PaaSZZJ\Log.Core\MySQLDAL\DbHelperMySQL.cs:line 443
+   at Log.Core.MySQLDAL.DalLogQHZZJ.Add(ModLogQHZZJ model) in E:\工作\01QHPlatform\01平台服务\PaaSZZJ\Log.Core\MySQLDAL\DalLogQHZZJ.cs:line 67
+2022年6月20日15:50:15 logQHZZJ:System.TypeInitializationException: The type initializer for 'Log.Core.MySQLDAL.DbHelperMySQL' threw an exception.
+ ---> System.Configuration.ConfigurationErrorsException: Configuration system failed to initialize
+ ---> System.Configuration.ConfigurationErrorsException: An XML comment cannot contain '--', and '-' cannot be the last character. Line 16, position 7. (E:\工作\01QHPlatform\01平台服务\PaaSZZJ\A0Public\netcoreapp3.1\BusinessFactory.dll.config line 16)
+ ---> System.Xml.XmlException: An XML comment cannot contain '--', and '-' cannot be the last character. Line 16, position 7.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseCDataOrComment(XmlNodeType type, Int32& outStartPos, Int32& outEndPos)
+   at System.Xml.XmlTextReaderImpl.ParseCDataOrComment(XmlNodeType type)
+   at System.Xml.XmlTextReaderImpl.ParseComment()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlTextReader.Read()
+   at System.Configuration.XmlUtil.CopyXmlNode(XmlUtilWriter utilWriter)
+   at System.Configuration.XmlUtil.CopyElement(XmlUtilWriter utilWriter)
+   at System.Configuration.XmlUtil.CopySection()
+   at System.Configuration.BaseConfigurationRecord.ScanSectionsRecursive(XmlUtil xmlUtil, String parentConfigKey, Boolean inLocation, String locationSubPath, OverrideModeSetting overrideMode, Boolean skipInChildApps)
+   at System.Configuration.BaseConfigurationRecord.ScanSections(XmlUtil xmlUtil)
+   at System.Configuration.BaseConfigurationRecord.InitConfigFromFile()
+   --- End of inner exception stack trace ---
+   at System.Configuration.ConfigurationSchemaErrors.ThrowIfErrors(Boolean ignoreLocal)
+   at System.Configuration.BaseConfigurationRecord.ThrowIfParseErrors(ConfigurationSchemaErrors schemaErrors)
+   at System.Configuration.BaseConfigurationRecord.ThrowIfInitErrors()
+   at System.Configuration.ClientConfigurationSystem.EnsureInit(String configKey)
+   --- End of inner exception stack trace ---
+   at System.Configuration.ConfigurationManager.PrepareConfigSystem()
+   at System.Configuration.ConfigurationManager.GetSection(String sectionName)
+   at System.Configuration.ConfigurationManager.get_AppSettings()
+   at Log.Core.MySQLDAL.DbHelperMySQL.get_ConnectionStringMySQL() in E:\工作\01QHPlatform\01平台服务\PaaSZZJ\Log.Core\MySQLDAL\DbHelperMySQL.cs:line 25
+   at Log.Core.MySQLDAL.DbHelperMySQL..cctor() in E:\工作\01QHPlatform\01平台服务\PaaSZZJ\Log.Core\MySQLDAL\DbHelperMySQL.cs:line 39
+   --- End of inner exception stack trace ---
+   at Log.Core.MySQLDAL.DbHelperMySQL.ExecuteSql(String SQLString, MySqlParameter[] cmdParms) in E:\工作\01QHPlatform\01平台服务\PaaSZZJ\Log.Core\MySQLDAL\DbHelperMySQL.cs:line 443
+   at Log.Core.MySQLDAL.DalLogQHZZJ.Add(ModLogQHZZJ model) in E:\工作\01QHPlatform\01平台服务\PaaSZZJ\Log.Core\MySQLDAL\DalLogQHZZJ.cs:line 67

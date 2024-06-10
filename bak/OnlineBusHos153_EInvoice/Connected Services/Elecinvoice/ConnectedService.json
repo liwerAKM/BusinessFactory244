@@ -1,0 +1,51 @@
+﻿{
+  "ProviderId": "Microsoft.VisualStudio.ConnectedService.Wcf",
+  "Version": "15.0.40203.910",
+  "ExtendedData": {
+    "inputs": [
+      "http://192.168.3.46:8088/Service.asmx"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, Elecinvoice"
+    ],
+    "references": [
+      "BouncyCastle.Crypto, {BouncyCastle.NetCore, 1.8.5}",
+      "D:\\自助机\\自助机软件程序\\PaaSZZJ\\OnlineBusHos153_EInvoice\\bin\\Debug\\netcoreapp3.1\\BusinessInterface.dll",
+      "D:\\自助机\\自助机软件程序\\PaaSZZJ\\OnlineBusHos153_EInvoice\\bin\\Debug\\netcoreapp3.1\\DB.Core.dll",
+      "D:\\自助机\\自助机软件程序\\PaaSZZJ\\OnlineBusHos153_EInvoice\\bin\\Debug\\netcoreapp3.1\\EncryptionKeyCore.dll",
+      "D:\\自助机\\自助机软件程序\\PaaSZZJ\\OnlineBusHos153_EInvoice\\bin\\Debug\\netcoreapp3.1\\Log.Core.dll",
+      "D:\\自助机\\自助机软件程序\\PaaSZZJ\\OnlineBusHos153_EInvoice\\bin\\Debug\\netcoreapp3.1\\PasS.Base.Lib.dll",
+      "D:\\自助机\\自助机软件程序\\PaaSZZJ\\OnlineBusHos153_EInvoice\\bin\\Debug\\netcoreapp3.1\\Soft.Core.dll",
+      "Google.Protobuf, {Google.Protobuf, 3.14.0}",
+      "K4os.Compression.LZ4, {K4os.Compression.LZ4, 1.1.11}",
+      "K4os.Compression.LZ4.Streams, {K4os.Compression.LZ4.Streams, 1.1.11}",
+      "K4os.Hash.xxHash, {K4os.Hash.xxHash, 1.0.6}",
+      "MySql.Data, {MySql.Data, 8.0.26}",
+      "Newtonsoft.Json, {Newtonsoft.Json, 13.0.1}",
+      "System.Configuration.ConfigurationManager, {System.Configuration.ConfigurationManager, 5.0.0}",
+      "System.Data.SqlClient, {System.Data.SqlClient, 4.8.2}",
+      "System.Drawing.Common, {System.Drawing.Common, 5.0.0}",
+      "System.Runtime.CompilerServices.Unsafe, {System.Runtime.CompilerServices.Unsafe, 4.5.2}",
+      "System.Security.AccessControl, {System.Security.AccessControl, 5.0.0}",
+      "System.Security.Permissions, {System.Security.Permissions, 5.0.0}",
+      "System.Security.Principal.Windows, {System.Security.Principal.Windows, 5.0.0}",
+      "System.ServiceModel, {System.ServiceModel.Primitives, 4.4.4}",
+      "System.ServiceModel.Duplex, {System.ServiceModel.Duplex, 4.4.4}",
+      "System.ServiceModel.Http, {System.ServiceModel.Http, 4.4.4}",
+      "System.ServiceModel.NetTcp, {System.ServiceModel.NetTcp, 4.4.4}",
+      "System.ServiceModel.Primitives, {System.ServiceModel.Primitives, 4.4.4}",
+      "System.ServiceModel.Security, {System.ServiceModel.Security, 4.4.4}",
+      "System.Text.Encoding.CodePages, {System.Text.Encoding.CodePages, 4.4.0}",
+      "System.Windows.Extensions, {System.Windows.Extensions, 5.0.0}",
+      "Ubiety.Dns.Core, {MySql.Data, 8.0.26}",
+      "Zstandard.Net, {MySql.Data, 8.0.26}"
+    ],
+    "sync": true,
+    "targetFramework": "netcoreapp3.1",
+    "typeReuseMode": "All"
+  }
+}

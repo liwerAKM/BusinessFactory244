@@ -1,0 +1,1 @@
+﻿{"ROOT":{"HEADER":{"MODULE":null,"CZLX":null,"TYPE":"GETQRCODE","source":null},"BODY":{"HOS_ID":"968","CASH_JE":15.0,"PAT_NAME":null,"SFZ_NO":null,"BILLDESC":"Z预约挂号费|342422199305053877|测试&1","TID":"I0119608"}}}

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <FileVersion>1.0.2111.3001</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessInterface\BusinessInterface.csproj" />
+    <ProjectReference Include="..\Log.Core\Log.Core.csproj" />
+    <ProjectReference Include="..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+    <ProjectReference Include="..\Soft.Core\Soft.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Runtime.Caching" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>

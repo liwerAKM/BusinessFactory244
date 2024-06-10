@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PaaS.Comm\PaaS.Comm.csproj" />
+    <ProjectReference Include="..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+  </ItemGroup>
+
+</Project>

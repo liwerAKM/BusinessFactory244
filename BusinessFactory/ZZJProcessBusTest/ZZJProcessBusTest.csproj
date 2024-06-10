@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ZZJBusinessInterface\ZZJBusinessInterface.csproj" />
+    <ProjectReference Include="..\..\ZZJSLB.Base.Lib\ZZJSLB.Base.Lib.csproj" />
+  </ItemGroup>
+
+</Project>

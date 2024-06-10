@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="jsonHelper\" />
+    <Folder Include="XML\" />
+    <Folder Include="Model\" />
+    <Folder Include="SQL\" />
+    <Folder Include="ZZJ\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DB.Core\DB.Core.csproj" />
+    <ProjectReference Include="..\EncryptionKeyCore\EncryptionKeyCore.csproj" />
+    <ProjectReference Include="..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+  </ItemGroup>
+
+</Project>

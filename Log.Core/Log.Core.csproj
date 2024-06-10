@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.26" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+    <ProjectReference Include="..\Soft.Core\Soft.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,11 @@
+﻿{
+  "lTERMINAL_SN": "ZZJ01",
+  "USER_ID": "001",
+  "HOS_ID": "44",
+  "SOURCE": "ZZJ",
+  "FILTER": "",
+  "HOS_NO": "202231630",
+  "HOS_PAT_ID": "4720906_1",
+  "BEGIN_DATE": "2022-12-02",
+  "END_DATE": "2022-12-05"
+}

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<FileVersion>1.0.2210.2808</FileVersion>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\dll</OutputPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="System.ServiceModel.Http" Version="4.9.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\BusinessInterface\BusinessInterface.csproj" />
+	  <ProjectReference Include="..\Log.Core\Log.Core.csproj" />
+	  <ProjectReference Include="..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+	  <ProjectReference Include="..\Soft.Core\Soft.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<WCFMetadata Include="Connected Services" />
+	</ItemGroup>
+
+</Project>

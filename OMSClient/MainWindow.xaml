@@ -1,0 +1,33 @@
+﻿<Window x:Class="OMSClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OMSClient"
+        mc:Ignorable="d"
+        Title="管理控制端" Height="900" Width="1440">
+    <Grid>
+        <TabControl>
+            <TabItem Header="概览">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="txt_SysInfo" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="1424" Height="104"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="系统状态">
+                <Grid Background="#FFE5E5E5">
+                    <Separator HorizontalAlignment="Left" Margin="360,222,0,0" VerticalAlignment="Top"/>
+                    <DataGrid AutoGenerateColumns="False" x:Name="dgvSLBRate"  Width="1430" Height="400" FontWeight="Normal" FontSize="16" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top"   >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="CName" Header="ID"  Width ="100" Binding="{Binding SLBID}"   />
+                            <DataGridTextColumn x:Name="CFBOSLBID" Header="主SLBID"  Width ="100" Binding="{Binding FBOSLBID}"   />
+                            <DataGridTextColumn x:Name="COrgID" Header="机构id"  Width ="80" Binding="{Binding OrgID}"   />
+                            <DataGridTextColumn x:Name="CClientSLBID" Header="ClientSLBID"  Width ="150" Binding="{Binding ClientSLBID}"   />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessInterface\BusinessInterface.csproj" />
+    <ProjectReference Include="..\DB.Core\DB.Core.csproj" />
+    <ProjectReference Include="..\EncryptionKeyCore\EncryptionKeyCore.csproj" />
+    <ProjectReference Include="..\Log.Core\Log.Core.csproj" />
+    <ProjectReference Include="..\PaaS.Comm\PaaS.Comm.csproj" />
+    <ProjectReference Include="..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AopSdk">
+      <HintPath>bin\Debug\netcoreapp3.1\AopSdk.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

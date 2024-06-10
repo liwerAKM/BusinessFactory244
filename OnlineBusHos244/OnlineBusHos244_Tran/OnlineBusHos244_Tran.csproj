@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <FileVersion>1.0.2310.1102</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\A0Public</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SqlSugarCore" Version="5.0.4.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+    <ProjectReference Include="..\..\Soft.Core\Soft.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Alipay.AopSdk.Core">
+      <HintPath>G:\项目依赖\长整型依赖DLL\dll引用\Alipay.AopSdk.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AopSdk">
+      <HintPath>G:\项目依赖\长整型依赖DLL\dll引用\AopSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="BusinessInterface">
+      <HintPath>E:\dingdingfile\PaaS长整型和分库基类包\BusinessInterface.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

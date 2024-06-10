@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netcoreapp3.1\PassCoreStarter.dll.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessFactory\BusinessTest\BusinessTest.csproj" />
+    <ProjectReference Include="..\BusinessFactory\CEBPP\CEBPP.csproj" />
+    <ProjectReference Include="..\PaaS.Comm\PaaS.Comm.csproj" />
+    <ProjectReference Include="..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppConfigFileDestination Remove="bin\Debug\netcoreapp3.1\PassCoreStarter.dll.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CSRedisCore" Version="3.6.6" />
+    <PackageReference Include="WebSocket4Net" Version="0.15.2" />
+  </ItemGroup>
+
+</Project>

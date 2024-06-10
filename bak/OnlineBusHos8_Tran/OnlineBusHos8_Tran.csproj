@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <FileVersion>1.0.2203.801</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessInterface\BusinessInterface.csproj" />
+    <ProjectReference Include="..\DB.Core\DB.Core.csproj" />
+    <ProjectReference Include="..\Log.Core\Log.Core.csproj" />
+    <ProjectReference Include="..\PasS.Base.Lib\PasS.Base.Lib.csproj" />
+    <ProjectReference Include="..\Soft.Core\Soft.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Plat\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Alipay.AopSdk.Core">
+      <HintPath>..\PaaSCore\bin\Debug\netcoreapp3.1\Alipay.AopSdk.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AopSdk">
+      <HintPath>..\PaaSCore\bin\Debug\netcoreapp3.1\AopSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="F2FPayDll">
+      <HintPath>..\PaaSCore\bin\Debug\netcoreapp3.1\F2FPayDll.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
