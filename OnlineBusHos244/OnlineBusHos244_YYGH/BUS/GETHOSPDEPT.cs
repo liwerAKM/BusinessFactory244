@@ -24,6 +24,7 @@ namespace OnlineBusHos244_YYGH.BUS
             string json_out = "";
             string aab = "";
             string aab2 = "";
+            string rer = "";
 
             string[] nousrdept = PubFunc.GetConfigClass("nousedept").Value.ToString().Split("|"); ;
             try
