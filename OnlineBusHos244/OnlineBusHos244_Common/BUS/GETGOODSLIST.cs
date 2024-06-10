@@ -15,7 +15,7 @@ namespace OnlineBusHos244_Common.BUS
         public static string B_GETGOODSLIST(string json_in)
         {
             DataReturn dataReturn = new DataReturn();
-            string json_out = "";
+            string json_out = "";;;
             try
             {
                 Model.GETGOODSLIST.GETGOODSLIST_IN _in = JSONSerializer.Deserialize<Model.GETGOODSLIST.GETGOODSLIST_IN>(json_in);
