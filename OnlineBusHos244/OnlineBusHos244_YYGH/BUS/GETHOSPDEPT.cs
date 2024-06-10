@@ -21,7 +21,7 @@ namespace OnlineBusHos244_YYGH.BUS
         public static string Business(string json_in)
         {
             DataReturn dataReturn = new DataReturn();
-            string json_out = "";
+            string json_out = ""; ;
             
             string[] nousrdept = PubFunc.GetConfigClass("nousedept").Value.ToString().Split("|"); ;
             try
