@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OnlineBusHos244_Tran
 {
-    public class LogHelpera2
+    public class LogHelper
     {
         public static void SaveLogHos(SqlSugarModel.Loghos loghos)
         {

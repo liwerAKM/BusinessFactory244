@@ -127,7 +127,7 @@ namespace OnlineBusHos244_YYGH.BUS
                                 dataReturn.Msg = his_rtnxml2;
                                 goto EndPoint;
                             }
-                            //his_rtnxml2 = "<ROOT><HEADER><TYPE>GETSCHINFO</TYPE><CZLX>0</CZLX></HEADER><BODY><CLBZ>0</CLBZ><CLJG>(TYPE:GETSCHINFO)成功</CLJG><DEPTLIST /><DOCLIST /></BODY></ROOT>".Replace(" ", "");
+                            //his_rtnxml2 = "<ROOT><HEADER><TYPE>GETSCHINFO</TYPE><CZLX>0</CZLX></HEADER><BODY><CLBZ>0</CLBZ><CLJG>(TYPE:GETSCHINFO)成功</CLJG><DEPTLIST><DEPT><DEPT_CODE>00092</DEPT_CODE><DEPT_NAME>VCT门诊</DEPT_NAME><SCH_TIME>上午</SCH_TIME><DOC_NO /><DOC_NAME /><SCH_TYPE>1</SCH_TYPE><REGISTER_TYPE>008</REGISTER_TYPE><STATUS /><COUNT_REM>50</COUNT_REM><GH_FEE>0.0</GH_FEE><ZL_FEE>0</ZL_FEE><START_TIME>00:00:00</START_TIME><END_TIME>13:00:00</END_TIME><CAN_WAIT>0</CAN_WAIT><DEPT_ORDER>00092</DEPT_ORDER><YB_CODE>110200006-a-4%0%</YB_CODE><DOC_ORDER /><DOC_NO_GJM /></DEPT><DEPT><DEPT_CODE>00092</DEPT_CODE><DEPT_NAME>VCT门诊</DEPT_NAME><SCH_TIME>下午</SCH_TIME><DOC_NO /><DOC_NAME /><SCH_TYPE>1</SCH_TYPE><REGISTER_TYPE>008</REGISTER_TYPE><STATUS /><COUNT_REM>50</COUNT_REM><GH_FEE>0.0</GH_FEE><ZL_FEE>0</ZL_FEE><START_TIME>13:00:00</START_TIME><END_TIME>23:59:59</END_TIME><CAN_WAIT>0</CAN_WAIT><DEPT_ORDER>00092</DEPT_ORDER><YB_CODE>110200006-a-4%0%</YB_CODE><DOC_ORDER /><DOC_NO_GJM /></DEPT></DEPTLIST><DOCLIST /></BODY></ROOT>";
                             try
                             {
 
@@ -139,10 +139,28 @@ namespace OnlineBusHos244_YYGH.BUS
 
 
 
+                               
+
                                 if (ds3.Tables.Count == 0 && ds4.Tables.Count == 0)
                                 {
                                     continue;
                                 }
+
+                                //#region 只要有一个非零元号源科室就是保留，其余情况 跳过
+                                //bool f1 = false;
+                                //foreach(DataRow tr in ds3.Tables[0].Rows)
+                                //{
+                                //    string aab = tr["GH_FEE"].ToString();
+                                //    if (tr["GH_FEE"].ToString() != "0.0"|| tr["ZL_FEE"].ToString() != "0") { 
+                                        
+                                //      f1 = true;  }
+
+                                //}
+                                //if (!f1) {
+                                //    continue;
+                                //}
+                                //#endregion
+
 
 
                                 DataTable dtrev2 = ds2.Tables[0];

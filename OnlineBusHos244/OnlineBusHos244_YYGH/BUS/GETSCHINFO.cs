@@ -111,6 +111,8 @@ namespace OnlineBusHos244_YYGH.BUS
                             dept.DOC_NAME = dtDept.Columns.Contains("DOC_NAME") ? dr["DOC_NAME"].ToString() : "";
                             dept.GH_FEE = dtDept.Columns.Contains("GH_FEE") ? dr["GH_FEE"].ToString() : "";
                             dept.ZL_FEE = dtDept.Columns.Contains("ZL_FEE") ? dr["ZL_FEE"].ToString() : "";
+                            if( (dept.GH_FEE == "0" || dept.GH_FEE == "0.0") && dept.ZL_FEE=="0") { continue; }
+
                             dept.SCH_TYPE = dtDept.Columns.Contains("SCH_TYPE") ? dr["SCH_TYPE"].ToString() : "";
                             dept.SCH_DATE = dtDept.Columns.Contains("SCH_DATE") ? DateTime.Now.ToString("yyyy-MM-dd") : DateTime.Now.ToString("yyyy-MM-dd");
                             dept.SCH_TIME = dtDept.Columns.Contains("SCH_TIME") ? dr["SCH_TIME"].ToString() : "";
