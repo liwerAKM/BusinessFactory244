@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Soft.Core;
+using System;
 using System.Data;
 using System.Xml;
 /// <summary>
@@ -24,6 +25,24 @@ public class QHXmlMode
         XMLHelper.X_XmlInsertNode(doc, "ROOT", "HEADER", "TYPE", TYPE);
         XMLHelper.X_XmlInsertNode(doc, "ROOT/HEADER", "CZLX", CZLX.ToString());
         XMLHelper.X_XmlInsertNode(doc, "ROOT", "BODY");
+        return doc;
+    }
+
+    public static XmlDocument GetBaseXmlSY(string MsgType, string MsgVersion)
+    {
+        XmlDocument doc = new XmlDocument();
+        //XmlDocument doc = XMLHelper.X_CreateXmlDocument("BSXml");
+        XmlElement xeRoot = doc.CreateElement("BSXml");
+        xeRoot.SetAttribute("key", "320106FC6E2807A");
+        xeRoot.SetAttribute("functionName", "");
+        doc.AppendChild(xeRoot);
+        XMLHelper.X_XmlInsertNode(doc, "BSXml", "MsgHeader");//三个参数不分大小写，插入一个节点
+        XMLHelper.X_XmlInsertNode_NOCHANGE(doc, "BSXml/MsgHeader", "Sender","");//四个参数分大小写
+        XMLHelper.X_XmlInsertNode_NOCHANGE(doc, "BSXml/MsgHeader", "MsgType", "");
+        XMLHelper.X_XmlInsertNode_NOCHANGE(doc, "BSXml/MsgHeader", "MsgVersion", "");
+        XMLHelper.X_XmlInsertNode_NOCHANGE(doc, "BSXml/MsgHeader", "CreationTime", "");
+        XMLHelper.X_XmlInsertNode(doc, "BSXml", "MsgBody");
+        XMLHelper.X_XmlInsertNode(doc, "BSXml/MsgBody", "Query");
         return doc;
     }
     /// <summary>

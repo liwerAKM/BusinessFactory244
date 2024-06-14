@@ -187,6 +187,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineBusHos244_Tran", "Onl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineBusHos244_InHos", "OnlineBusHos244\OnlineBusHos244_InHos\OnlineBusHos244_InHos.csproj", "{AF623871-9C40-41B4-8754-931AD6BB6E1E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineBusHos44_EInvoice", "OnlineBusHos44\OnlineBusHos44_EInvoice\OnlineBusHos44_EInvoice.csproj", "{BA6A57DE-FE10-489C-9D8E-18794D638103}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -509,6 +511,10 @@ Global
 		{AF623871-9C40-41B4-8754-931AD6BB6E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF623871-9C40-41B4-8754-931AD6BB6E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF623871-9C40-41B4-8754-931AD6BB6E1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6A57DE-FE10-489C-9D8E-18794D638103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6A57DE-FE10-489C-9D8E-18794D638103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6A57DE-FE10-489C-9D8E-18794D638103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6A57DE-FE10-489C-9D8E-18794D638103}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -576,6 +582,7 @@ Global
 		{CA0349BD-CE2D-4B76-9416-75479625487A} = {6AE1A3E5-DB02-4BDF-A9F6-6A239C725D4F}
 		{A089E28D-3865-4FDF-BE8A-53357A5689F4} = {6AE1A3E5-DB02-4BDF-A9F6-6A239C725D4F}
 		{AF623871-9C40-41B4-8754-931AD6BB6E1E} = {6AE1A3E5-DB02-4BDF-A9F6-6A239C725D4F}
+		{BA6A57DE-FE10-489C-9D8E-18794D638103} = {8C8278D7-E2FD-497E-8F1A-0F620D719340}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9C35715-33D9-495B-8164-C18BCFCF92DA}

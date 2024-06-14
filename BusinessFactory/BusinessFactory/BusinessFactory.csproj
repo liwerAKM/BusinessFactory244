@@ -30,6 +30,7 @@
     <ProjectReference Include="..\..\OnlineBusHos244\OnlineBusHos244_Report\OnlineBusHos244_Report.csproj" />
     <ProjectReference Include="..\..\OnlineBusHos244\OnlineBusHos244_Tran\OnlineBusHos244_Tran.csproj" />
     <ProjectReference Include="..\..\OnlineBusHos244\OnlineBusHos244_YYGH\OnlineBusHos244_YYGH.csproj" />
+    <ProjectReference Include="..\..\OnlineBusHos44\OnlineBusHos44_EInvoice\OnlineBusHos44_EInvoice.csproj" />
     <ProjectReference Include="..\..\OnlineBusHos\OnlineBusHos_Common\OnlineBusHos_Common.csproj" />
     <ProjectReference Include="..\..\PaaS.Comm\PaaS.Comm.csproj" />
     <ProjectReference Include="..\..\PasS.Base.Lib\PasS.Base.Lib.csproj" />

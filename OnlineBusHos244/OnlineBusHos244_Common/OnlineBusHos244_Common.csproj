@@ -9,6 +9,7 @@
     <OutputPath>..\..\A0Public</OutputPath>
   </PropertyGroup>
 
+
   <ItemGroup>
     <PackageReference Include="SqlSugarCore" Version="5.0.4.7" />
   </ItemGroup>

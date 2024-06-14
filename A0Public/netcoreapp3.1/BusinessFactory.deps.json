@@ -20,6 +20,7 @@
           "OnlineBusHos244_Report": "1.0.0",
           "OnlineBusHos244_Tran": "1.0.0",
           "OnlineBusHos244_YYGH": "1.0.0",
+          "OnlineBusHos44_EInvoice": "1.0.0",
           "OnlineBusHos_Common": "1.0.0",
           "PaaS.Comm": "1.0.0",
           "PasS.Base.Lib": "1.0.0",
@@ -2312,6 +2313,16 @@
           "OnlineBusHos244_YYGH.dll": {}
         }
       },
+      "OnlineBusHos44_EInvoice/1.0.0": {
+        "dependencies": {
+          "BusinessInterface": "1.0.0",
+          "Log.Core": "1.0.0",
+          "System.ServiceModel.Http": "4.9.0"
+        },
+        "runtime": {
+          "OnlineBusHos44_EInvoice.dll": {}
+        }
+      },
       "OnlineBusHos_Common/1.0.0": {
         "dependencies": {
           "BusinessInterface": "1.0.0",
@@ -3820,6 +3831,11 @@
       "sha512": ""
     },
     "OnlineBusHos244_YYGH/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OnlineBusHos44_EInvoice/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

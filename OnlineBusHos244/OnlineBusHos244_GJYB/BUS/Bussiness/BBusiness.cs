@@ -484,7 +484,7 @@ namespace OnlineBusHos244_GJYB.BUS
             string chsInput2203 = "";
             string chsInput2204 = "";
             string chsInput2206 = "";
-           // string chsInput2207 = "";
+            string chsInput2207 = "";
             try
             {
                 XmlDocument xmldoc = XMLHelper.X_GetXmlDocument(his_rtnxml);
@@ -505,7 +505,7 @@ namespace OnlineBusHos244_GJYB.BUS
                     chsInput2203 = dtrev.Rows[0]["chsInput2203"].ToString();
                     chsInput2204 = dtrev.Rows[0]["chsInput2204"].ToString();
                     chsInput2206 = dtrev.Rows[0]["chsInput2206"].ToString();
-                    //chsInput2207 = dtrev.Rows[0]["chsInput2207"].ToString();
+                    chsInput2207 = dtrev.Rows[0]["chsInput2207"].ToString();
 
                 }
             }
@@ -602,6 +602,8 @@ namespace OnlineBusHos244_GJYB.BUS
                 dataReturn.Msg = msg;
                 return dataReturn;
             }
+
+          
             //调用医保
             Models.OutputRoot outputRoot2206 = GlobalVar.YBTrans(HOS_ID, inputRoot2206);
             if (outputRoot2206.infcode != "0")
@@ -610,6 +612,9 @@ namespace OnlineBusHos244_GJYB.BUS
                 dataReturn.Msg = outputRoot2206.err_msg;
                 return dataReturn;
             }
+
+
+
 
             //保存记录
             SqlSugarModel.ChsTran chsTran = new SqlSugarModel.ChsTran();
@@ -631,17 +636,29 @@ namespace OnlineBusHos244_GJYB.BUS
             chsTran.chsOutput2206 = JsonConvert.SerializeObject(outputRoot2206);
             chsTran.chsOutput5360 = chspsn.yb5360;
 
+            infno = "2207";
+            Models.InputRoot inputRoot2207 = new Models.InputRoot();
+            Models.RT2206.Root rt2206 = outputRoot2206.GetOutput<Models.RT2206.Root>();
+            JObject jin2207 = JObject.Parse(chsInput2207);
+            jin2207["data"]["mdtrt_id"] = mdtrt_id;
+            jin2207["data"]["fulamt_ownpay_amt"] = rt2206.setlinfo.fulamt_ownpay_amt;
+            jin2207["data"]["overlmt_selfpay"] = rt2206.setlinfo.overlmt_selfpay;
+            jin2207["data"]["preselfpay_amt"] = rt2206.setlinfo.preselfpay_amt;
+            jin2207["data"]["inscp_scp_amt"] = rt2206.setlinfo.inscp_scp_amt;
+            flag = CSBHelper.CreateInputRoot(HOS_ID, infno, "", opter_no, insuplc_admdvs, jin2207, ref inputRoot2207, ref msg);
+            if (!flag)
+            {
+                dataReturn.Code = 1;
+                dataReturn.Msg = msg;
+                return dataReturn;
+            }
+            chsTran.chsInput2207 = JsonConvert.SerializeObject(inputRoot2207);
+
+
             chsTran.create_time = DateTime.Now;
             db.Saveable(chsTran).ExecuteCommand();
-            Models.RT2206.Root rt2206 = outputRoot2206.GetOutput<Models.RT2206.Root>();
 
-            
-            //JObject jin2207 = JObject.Parse(chsInput2207);
-            //jin2207["data"]["mdtrt_id"] = mdtrt_id;
-            //jin2207["data"]["fulamt_ownpay_amt"] = rt2206.setlinfo.fulamt_ownpay_amt;
-            //jin2207["data"]["overlmt_selfpay"] = rt2206.setlinfo.overlmt_selfpay;
-            //jin2207["data"]["preselfpay_amt"] = rt2206.setlinfo.preselfpay_amt;
-            //jin2207["data"]["inscp_scp_amt"] = rt2206.setlinfo.inscp_scp_amt;
+
 
             _out.MDTRT_ID = rt2206.setlinfo.mdtrt_id;
             _out.MEDFEE_SUMAMT = FormatHelper.GetStr(rt2206.setlinfo.medfee_sumamt);
@@ -652,7 +669,7 @@ namespace OnlineBusHos244_GJYB.BUS
             _out.BALC = FormatHelper.GetStr(rt2206.setlinfo.balc);
             _out.YLLB = FormatHelper.GetStr(rt2206.setlinfo.med_type);
             _out.YLLB_NAME = CSBHelper.GETYLLBNAME(rt2206.setlinfo.med_type);
-            //_out.CHSINPUT2207 = JsonConvert.SerializeObject(jin2207);
+            _out.CHSINPUT2207 = JsonConvert.SerializeObject(jin2207);
             dataReturn.Code = 0;
             dataReturn.Msg = "SUCCESS";
             dataReturn.Param = JSONSerializer.Serialize(_out);
@@ -988,62 +1005,64 @@ namespace OnlineBusHos244_GJYB.BUS
             //调用HIS获取结算报文
             string chsInput2207;
 
-            #region 部分医院直接获取结算数据
-            string meodname;
-            if (ISGH == "1")
-            {
-                meodname = "GETCHSREGSAVE";
-            }
-            else
-            {
-                meodname = "GETCHSOUTPSAVE";
-            }
-            XmlDocument doc = QHXmlMode.GetBaseXml(meodname, "1");
-            XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "HOS_ID", HOS_ID);
-            XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "LTERMINAL_SN", string.IsNullOrEmpty(_in.LTERMINAL_SN) ? "" : _in.LTERMINAL_SN.Trim());
-            XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "HOS_SN", HOS_SN);
-            XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "PRE_NO", PRE_NO);
-            XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "psn_no", psn_no);
-            XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "mdtrt_cert_no", string.IsNullOrEmpty(_in.MDTRT_CERT_NO) ? "" : _in.MDTRT_CERT_NO.Trim());
-            XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "mdtrt_cert_type", string.IsNullOrEmpty(_in.MDTRT_CERT_TYPE) ? "" : _in.MDTRT_CERT_TYPE.Trim());
-            XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "chsInput2206", chsInput2206);
-            XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "chsOutput2206", chsOutput2206);
-            XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "MB_ID", "");
+            //#region 部分医院直接获取结算数据
+            //string meodname;
+            //if (ISGH == "1")
+            //{
+            //    meodname = "GETCHSREGSAVE";
+            //}
+            //else
+            //{
+            //    meodname = "GETCHSOUTPSAVE";
+            //}
+            //XmlDocument doc = QHXmlMode.GetBaseXml(meodname, "1");
+            //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "HOS_ID", HOS_ID);
+            //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "LTERMINAL_SN", string.IsNullOrEmpty(_in.LTERMINAL_SN) ? "" : _in.LTERMINAL_SN.Trim());
+            //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "HOS_SN", HOS_SN);
+            //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "PRE_NO", PRE_NO);
+            //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "psn_no", psn_no);
+            //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "mdtrt_cert_no", string.IsNullOrEmpty(_in.MDTRT_CERT_NO) ? "" : _in.MDTRT_CERT_NO.Trim());
+            //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "mdtrt_cert_type", string.IsNullOrEmpty(_in.MDTRT_CERT_TYPE) ? "" : _in.MDTRT_CERT_TYPE.Trim());
+            //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "chsInput2206", chsInput2206);
+            //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "chsOutput2206", chsOutput2206);
+            //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "MB_ID", "");
 
-            string his_rtnxml = "";
-            if (!GlobalVar.CALLSERVICE(_in.HOS_ID, doc.InnerXml, ref his_rtnxml))
-            {
-                dataReturn.Code = 1;
-                dataReturn.Msg = his_rtnxml;
-                return dataReturn;
-            }
-            //获取医保挂号结算参数：调用3.3.13获取挂号医保结算数据（TYPE：GETCHSREGTRY）[医保B方案]
-            try
-            {
-                XmlDocument xmldoc = XMLHelper.X_GetXmlDocument(his_rtnxml);
-                DataSet ds = XMLHelper.X_GetXmlData(xmldoc, "ROOT/BODY");
-                DataTable dtrev = ds.Tables[0];
-                if (dtrev.Rows[0]["CLBZ"].ToString() != "0")
-                {
-                    dataReturn.Code = 1;
-                    dataReturn.Msg = dtrev.Rows[0]["CLJG"].ToString();
-                    dataReturn.Param = JSONSerializer.Serialize(_out);
-                    return dataReturn;
-                }
-                else
-                {
-                    chsInput2207 = dtrev.Rows[0]["chsInput2207"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                dataReturn.Code = 5;
-                dataReturn.Msg = "解析HIS出参失败,请检查HIS出参是否正确";
-                dataReturn.Param = ex.ToString();
-                return dataReturn;
-            }
+            //string his_rtnxml = "";
+            //if (!GlobalVar.CALLSERVICE(_in.HOS_ID, doc.InnerXml, ref his_rtnxml))
+            //{
+            //    dataReturn.Code = 1;
+            //    dataReturn.Msg = his_rtnxml;
+            //    return dataReturn;
+            //}
+            ////获取医保挂号结算参数：调用3.3.13获取挂号医保结算数据（TYPE：GETCHSREGTRY）[医保B方案]
+            //try
+            //{
+            //    XmlDocument xmldoc = XMLHelper.X_GetXmlDocument(his_rtnxml);
+            //    DataSet ds = XMLHelper.X_GetXmlData(xmldoc, "ROOT/BODY");
+            //    DataTable dtrev = ds.Tables[0];
+            //    if (dtrev.Rows[0]["CLBZ"].ToString() != "0")
+            //    {
+            //        dataReturn.Code = 1;
+            //        dataReturn.Msg = dtrev.Rows[0]["CLJG"].ToString();
+            //        dataReturn.Param = JSONSerializer.Serialize(_out);
+            //        return dataReturn;
+            //    }
+            //    else
+            //    {
+            //        chsInput2207 = dtrev.Rows[0]["chsInput2207"].ToString();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    dataReturn.Code = 5;
+            //    dataReturn.Msg = "解析HIS出参失败,请检查HIS出参是否正确";
+            //    dataReturn.Param = ex.ToString();
+            //    return dataReturn;
+            //}
+            //#endregion
 
-            #endregion
+
+            chsInput2207 = chsTran.chsInput2207;
             string msg = "";
             string infno = "";
             bool flag = false;
@@ -1051,10 +1070,10 @@ namespace OnlineBusHos244_GJYB.BUS
             infno = "2207";
             Models.InputRoot inputRoot2207 = new Models.InputRoot();
             JObject jin2207 = JObject.Parse(chsInput2207);//优先用JObject
-            //jin2207["data"]["mdtrt_id"] = chsTran.mdtrt_id;
+            jin2207["data"]["mdtrt_id"] = chsTran.mdtrt_id;
 
-            //JObject jin2206 = JObject.Parse(chsTran.chsInput2206);
-            //jin2207["data"]["chrg_bchno"] = jin2206["input"]["data"]["chrg_bchno"];
+            JObject jin2206 = JObject.Parse(chsTran.chsInput2206);
+            jin2207["data"]["chrg_bchno"] = jin2206["input"]["data"]["chrg_bchno"];
 
             flag = CSBHelper.CreateInputRoot(HOS_ID, infno, "", opter_no, insuplc_admdvs, jin2207, ref inputRoot2207, ref msg);
             if (!flag)
@@ -1064,6 +1083,8 @@ namespace OnlineBusHos244_GJYB.BUS
                 return dataReturn;
             }
             //调用医保
+
+            
             Models.OutputRoot outputRoot2207 = GlobalVar.YBTrans(HOS_ID, inputRoot2207);
             if (outputRoot2207.infcode != "0")
             {

@@ -15,7 +15,7 @@ namespace ZZJ_YYGH.BUS
     {
         public static string B_GETSCHTIME(string json_in)
         {
-            DataReturn dataReturn = new DataReturn();
+            DataReturn dataReturn = new DataReturn(); ; ;
             string json_out = "";
             try
             {

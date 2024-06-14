@@ -26,8 +26,14 @@ namespace OnlineBusHos244_Common.BUS
             //yb5360["infcode"] = "123";
             DataReturn dataReturn = new DataReturn();
             string json_out = "";
+            //XmlDocument doc = new XmlDocument();
+            //doc=QHXmlMode.GetBaseXmlSY("SENDCARDINFO", "0");
+            //string innerxml = doc.OuterXml;
+            //XMLHelper.X_XmlNodeDelete(doc, "BSXml/MsgHeader");
             try
             {
+
+
                 string ab =DateTime.Now.ToString("yyyy-MM-dd");
                 Model.GETPATINFO_M.GETPATINFO_IN _in = JSONSerializer.Deserialize<Model.GETPATINFO_M.GETPATINFO_IN>(json_in);
                 Model.GETPATINFO_M.GETPATINFO_OUT _out = new Model.GETPATINFO_M.GETPATINFO_OUT();
@@ -40,7 +46,10 @@ namespace OnlineBusHos244_Common.BUS
                 string LTERMINAL_SN = FormatHelper.GetStr(_in.LTERMINAL_SN);
                 string USER_ID = FormatHelper.GetStr(_in.USER_ID);
                 string PAT_CARD_OUT = dic_filter.ContainsKey("PAT_CARD_OUT") ? dic_filter["PAT_CARD_OUT"] : "";
-
+                if (SFZ_NO == "")
+                {
+                    dataReturn.Code = 1;
+                    dataReturn.Msg = "身份证不能为空"; goto EndPoint; }
                 var db = new DbMySQLZZJ().Client;
 
                 //YLCARD_TYPE = PubFunc.GETHISYLCARDTYPE(_in.YLCARD_TYPE);
@@ -119,124 +128,124 @@ namespace OnlineBusHos244_Common.BUS
                     dataReturn.Msg = "平台未建档";
                     goto EndPoint;
 
-                    XmlDocument doc = QHXmlMode.GetBaseXml("GETPATINFO", "1");
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "HOS_ID", string.IsNullOrEmpty(_in.HOS_ID) ? "" : _in.HOS_ID.Trim());
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "lTERMINAL_SN", string.IsNullOrEmpty(_in.LTERMINAL_SN) ? "" : _in.LTERMINAL_SN.Trim());
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "USER_ID", string.IsNullOrEmpty(_in.USER_ID) ? "" : _in.USER_ID.Trim());
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "YLCARD_TYPE", YLCARD_TYPE); //string.IsNullOrEmpty(_in.YLCARD_TYPE) ? "" : _in.YLCARD_TYPE.Trim());
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "YLCARD_NO", string.IsNullOrEmpty(_in.YLCARD_NO) ? "" : _in.YLCARD_NO.Trim());
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "SFZ_NO", string.IsNullOrEmpty(_in.SFZ_NO) ? "" : _in.SFZ_NO.Trim());
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "PAT_NAME", string.IsNullOrEmpty(_in.PAT_NAME) ? "" : _in.PAT_NAME.Trim());
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "PAT_TYPE", "");
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "DIS_NO", "");
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "NBGRBH", "");
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "HOSPATID", "");
-                    XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "YB_OUT", "");
+                    //XmlDocument doc = QHXmlMode.GetBaseXml("GETPATINFO", "1");
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "HOS_ID", string.IsNullOrEmpty(_in.HOS_ID) ? "" : _in.HOS_ID.Trim());
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "lTERMINAL_SN", string.IsNullOrEmpty(_in.LTERMINAL_SN) ? "" : _in.LTERMINAL_SN.Trim());
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "USER_ID", string.IsNullOrEmpty(_in.USER_ID) ? "" : _in.USER_ID.Trim());
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "YLCARD_TYPE", YLCARD_TYPE); //string.IsNullOrEmpty(_in.YLCARD_TYPE) ? "" : _in.YLCARD_TYPE.Trim());
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "YLCARD_NO", string.IsNullOrEmpty(_in.YLCARD_NO) ? "" : _in.YLCARD_NO.Trim());
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "SFZ_NO", string.IsNullOrEmpty(_in.SFZ_NO) ? "" : _in.SFZ_NO.Trim());
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "PAT_NAME", string.IsNullOrEmpty(_in.PAT_NAME) ? "" : _in.PAT_NAME.Trim());
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "PAT_TYPE", "");
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "DIS_NO", "");
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "NBGRBH", "");
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "HOSPATID", "");
+                    //XMLHelper.X_XmlInsertNode(doc, "ROOT/BODY", "YB_OUT", "");
 
-                    string inxml = doc.InnerXml;
-                    string his_rtnxml = "";
-                    if (!PubFunc.CALLSERVICE(_in.HOS_ID, inxml, ref his_rtnxml))
-                    {
-                        dataReturn.Code = 1;
-                        dataReturn.Msg = his_rtnxml;
-                        goto EndPoint;
-                    }
-                    _out.HIS_RTNXML = his_rtnxml;
-                    try
-                    {
-                        XmlDocument xmldoc = XMLHelper.X_GetXmlDocument(his_rtnxml);
-                        DataTable dtrev = XMLHelper.X_GetXmlData(xmldoc, "ROOT/BODY").Tables[0];
+                    //string inxml = doc.InnerXml;
+                    //string his_rtnxml = "";
+                    //if (!PubFunc.CALLSERVICE(_in.HOS_ID, inxml, ref his_rtnxml))
+                    //{
+                    //    dataReturn.Code = 1;
+                    //    dataReturn.Msg = his_rtnxml;
+                    //    goto EndPoint;
+                    //}
+                    //_out.HIS_RTNXML = his_rtnxml;
+                    //try
+                    //{
+                    //    XmlDocument xmldoc = XMLHelper.X_GetXmlDocument(his_rtnxml);
+                    //    DataTable dtrev = XMLHelper.X_GetXmlData(xmldoc, "ROOT/BODY").Tables[0];
 
-                        if (dtrev.Rows[0]["CLBZ"].ToString() != "0")
-                        {
-                            _out.IS_EXIST = "0";
-                            if (IsEHealthCard)
-                            {
-                                _out.PAT_NAME = response.data.realname;
-                                _out.SFZ_NO = response.data.idNumber;
-                                _out.SEX = IDCardHelper.getSex(response.data.idNumber);
-                                _out.AGE = IDCardHelper.getAge(response.data.idNumber).ToString();
-                                _out.BIR_DATE = IDCardHelper.getBirthday(response.data.idNumber);
-                                _out.MOBILE_NO = response.data.cellphone;
-                                _out.ADDRESS = response.data.addr;
-                            }
-                            goto EndPoint1;
-                        }
-                        _out.IS_EXIST = "1";
-                        _out.PAT_NAME = dtrev.Columns.Contains("PAT_NAME") ? FormatHelper.GetStr(dtrev.Rows[0]["PAT_NAME"]) : "";
-                        _out.SEX = dtrev.Columns.Contains("SEX") ? FormatHelper.GetStr(dtrev.Rows[0]["SEX"]) : "";
-                        _out.AGE = dtrev.Columns.Contains("AGE") ? FormatHelper.GetStr(dtrev.Rows[0]["AGE"]) : "";
-                        _out.MOBILE_NO = dtrev.Columns.Contains("MOBILE_NO") ? FormatHelper.GetStr(dtrev.Rows[0]["MOBILE_NO"]) : "";
-                        _out.ADDRESS = dtrev.Columns.Contains("ADDRESS") ? FormatHelper.GetStr(dtrev.Rows[0]["ADDRESS"]) : "";
-                        _out.SFZ_NO = dtrev.Columns.Contains("SFZ_NO") ? FormatHelper.GetStr(dtrev.Rows[0]["SFZ_NO"]) : "";
-                        _out.HOSPATID = dtrev.Columns.Contains("HOSPATID") ? FormatHelper.GetStr(dtrev.Rows[0]["HOSPATID"]) : "";
-                        _out.BIR_DATE = dtrev.Columns.Contains("BIRTHDAY") ? FormatHelper.GetStr(dtrev.Rows[0]["BIRTHDAY"]) : QHZZJCommonFunction.GetBirthdayByIDCard(_out.SFZ_NO);
-                        _out.GUARDIAN_NAME = dtrev.Columns.Contains("GUARDIAN_NAME") ? FormatHelper.GetStr(dtrev.Rows[0]["GUARDIAN_NAME"]) : "";
-                        _out.GUARDIAN_SFZ_NO = dtrev.Columns.Contains("GUARDIAN_SFZ_NO") ? FormatHelper.GetStr(dtrev.Rows[0]["GUARDIAN_SFZ_NO"]) : "";
-                        _out.YY_LSH = dtrev.Columns.Contains("YY_LSH") ? FormatHelper.GetStr(dtrev.Rows[0]["YY_LSH"]) : "";
+                    //    if (dtrev.Rows[0]["CLBZ"].ToString() != "0")
+                    //    {
+                    //        _out.IS_EXIST = "0";
+                    //        if (IsEHealthCard)
+                    //        {
+                    //            _out.PAT_NAME = response.data.realname;
+                    //            _out.SFZ_NO = response.data.idNumber;
+                    //            _out.SEX = IDCardHelper.getSex(response.data.idNumber);
+                    //            _out.AGE = IDCardHelper.getAge(response.data.idNumber).ToString();
+                    //            _out.BIR_DATE = IDCardHelper.getBirthday(response.data.idNumber);
+                    //            _out.MOBILE_NO = response.data.cellphone;
+                    //            _out.ADDRESS = response.data.addr;
+                    //        }
+                    //        goto EndPoint1;
+                    //    }
+                    //    _out.IS_EXIST = "1";
+                    //    _out.PAT_NAME = dtrev.Columns.Contains("PAT_NAME") ? FormatHelper.GetStr(dtrev.Rows[0]["PAT_NAME"]) : "";
+                    //    _out.SEX = dtrev.Columns.Contains("SEX") ? FormatHelper.GetStr(dtrev.Rows[0]["SEX"]) : "";
+                    //    _out.AGE = dtrev.Columns.Contains("AGE") ? FormatHelper.GetStr(dtrev.Rows[0]["AGE"]) : "";
+                    //    _out.MOBILE_NO = dtrev.Columns.Contains("MOBILE_NO") ? FormatHelper.GetStr(dtrev.Rows[0]["MOBILE_NO"]) : "";
+                    //    _out.ADDRESS = dtrev.Columns.Contains("ADDRESS") ? FormatHelper.GetStr(dtrev.Rows[0]["ADDRESS"]) : "";
+                    //    _out.SFZ_NO = dtrev.Columns.Contains("SFZ_NO") ? FormatHelper.GetStr(dtrev.Rows[0]["SFZ_NO"]) : "";
+                    //    _out.HOSPATID = dtrev.Columns.Contains("HOSPATID") ? FormatHelper.GetStr(dtrev.Rows[0]["HOSPATID"]) : "";
+                    //    _out.BIR_DATE = dtrev.Columns.Contains("BIRTHDAY") ? FormatHelper.GetStr(dtrev.Rows[0]["BIRTHDAY"]) : QHZZJCommonFunction.GetBirthdayByIDCard(_out.SFZ_NO);
+                    //    _out.GUARDIAN_NAME = dtrev.Columns.Contains("GUARDIAN_NAME") ? FormatHelper.GetStr(dtrev.Rows[0]["GUARDIAN_NAME"]) : "";
+                    //    _out.GUARDIAN_SFZ_NO = dtrev.Columns.Contains("GUARDIAN_SFZ_NO") ? FormatHelper.GetStr(dtrev.Rows[0]["GUARDIAN_SFZ_NO"]) : "";
+                    //    _out.YY_LSH = dtrev.Columns.Contains("YY_LSH") ? FormatHelper.GetStr(dtrev.Rows[0]["YY_LSH"]) : "";
 
-                        if (patInfo == null) 
-                        {
+                    //    if (patInfo == null) 
+                    //    {
                           
-                            int pat_id = 0;
-                            if (!PubFunc.GetSysID("pat_info", out pat_id))
-                            {
-                                dataReturn.Code = 5;
-                                dataReturn.Msg = "[提示]建档失败，请联系医院处理";
-                                dataReturn.Param  ="获取pat_info的sysid失败";
-                                goto EndPoint;
-                            }
+                    //        int pat_id = 0;
+                    //        if (!PubFunc.GetSysID("pat_info", out pat_id))
+                    //        {
+                    //            dataReturn.Code = 5;
+                    //            dataReturn.Msg = "[提示]建档失败，请联系医院处理";
+                    //            dataReturn.Param  ="获取pat_info的sysid失败";
+                    //            goto EndPoint;
+                    //        }
 
-                            patInfo = new SqlSugarModel.PatInfo();
-                            patInfo.PAT_ID = pat_id;
-                            patInfo.SFZ_NO = _out.SFZ_NO;
-                            patInfo.PAT_NAME = _out.PAT_NAME;
-                            patInfo.SEX = _out.SEX;
-                            patInfo.BIRTHDAY = _out.BIR_DATE;
-                            patInfo.ADDRESS = _out.ADDRESS;
-                            patInfo.MOBILE_NO = _out.MOBILE_NO;
-                            patInfo.GUARDIAN_NAME = _out.GUARDIAN_NAME;
-                            patInfo.GUARDIAN_SFZ_NO = _out.GUARDIAN_SFZ_NO;
-                            patInfo.CREATE_TIME = DateTime.Now;
-                            patInfo.MARK_DEL = false;
-                            patInfo.OPER_TIME = DateTime.Now;
-                            patInfo.NOTE = _in.LTERMINAL_SN;
-                            db.Insertable(patInfo).ExecuteCommand();
-                        }
-                        if (patCard == null) 
-                        {
-                            patCard = new SqlSugarModel.PatCard();
-                            patCard.PAT_ID = patInfo.PAT_ID;
-                            patCard.YLCARD_TYPE =FormatHelper.GetInt(_in.YLCARD_TYPE);
-                            patCard.YLCARD_NO = _in.YLCARD_NO;
-                            patCard.CREATE_TIME = DateTime.Now;
-                            patCard.MARK_DEL = "0";
-                            db.Insertable(patCard).ExecuteCommand();
-                        }
-                        if (patCardBind == null)
-                        {
-                            patCardBind = new SqlSugarModel.PatCardBind();
-                            patCardBind.HOS_ID = _in.HOS_ID;
-                            patCardBind.PAT_ID = patInfo.PAT_ID;
-                            patCardBind.YLCARD_TYPE = FormatHelper.GetInt(_in.YLCARD_TYPE);
-                            patCardBind.YLCARD_NO = _in.YLCARD_NO;
-                            patCardBind.HOSPATID = _out.HOSPATID;
-                            patCardBind.MARK_BIND = 1;
-                            patCardBind.BAND_TIME = DateTime.Now;
-                            db.Insertable(patCardBind).ExecuteCommand();
-                        }
+                    //        patInfo = new SqlSugarModel.PatInfo();
+                    //        patInfo.PAT_ID = pat_id;
+                    //        patInfo.SFZ_NO = _out.SFZ_NO;
+                    //        patInfo.PAT_NAME = _out.PAT_NAME;
+                    //        patInfo.SEX = _out.SEX;
+                    //        patInfo.BIRTHDAY = _out.BIR_DATE;
+                    //        patInfo.ADDRESS = _out.ADDRESS;
+                    //        patInfo.MOBILE_NO = _out.MOBILE_NO;
+                    //        patInfo.GUARDIAN_NAME = _out.GUARDIAN_NAME;
+                    //        patInfo.GUARDIAN_SFZ_NO = _out.GUARDIAN_SFZ_NO;
+                    //        patInfo.CREATE_TIME = DateTime.Now;
+                    //        patInfo.MARK_DEL = false;
+                    //        patInfo.OPER_TIME = DateTime.Now;
+                    //        patInfo.NOTE = _in.LTERMINAL_SN;
+                    //        db.Insertable(patInfo).ExecuteCommand();
+                    //    }
+                    //    if (patCard == null) 
+                    //    {
+                    //        patCard = new SqlSugarModel.PatCard();
+                    //        patCard.PAT_ID = patInfo.PAT_ID;
+                    //        patCard.YLCARD_TYPE =FormatHelper.GetInt(_in.YLCARD_TYPE);
+                    //        patCard.YLCARD_NO = _in.YLCARD_NO;
+                    //        patCard.CREATE_TIME = DateTime.Now;
+                    //        patCard.MARK_DEL = "0";
+                    //        db.Insertable(patCard).ExecuteCommand();
+                    //    }
+                    //    if (patCardBind == null)
+                    //    {
+                    //        patCardBind = new SqlSugarModel.PatCardBind();
+                    //        patCardBind.HOS_ID = _in.HOS_ID;
+                    //        patCardBind.PAT_ID = patInfo.PAT_ID;
+                    //        patCardBind.YLCARD_TYPE = FormatHelper.GetInt(_in.YLCARD_TYPE);
+                    //        patCardBind.YLCARD_NO = _in.YLCARD_NO;
+                    //        patCardBind.HOSPATID = _out.HOSPATID;
+                    //        patCardBind.MARK_BIND = 1;
+                    //        patCardBind.BAND_TIME = DateTime.Now;
+                    //        db.Insertable(patCardBind).ExecuteCommand();
+                    //    }
 
-                        EndPoint1:
-                        dataReturn.Code = 0;
-                        dataReturn.Msg = "SUCCESS";
-                        dataReturn.Param = JSONSerializer.Serialize(_out);
-                    }
-                    catch (Exception ex)
-                    {
-                        dataReturn.Code = 5;
-                        dataReturn.Msg = "解析HIS出参失败,请检查HIS出参是否正确";
-                        dataReturn.Param = ex.Message;
-                    }
+                    //    EndPoint1:
+                    //    dataReturn.Code = 0;
+                    //    dataReturn.Msg = "SUCCESS";
+                    //    dataReturn.Param = JSONSerializer.Serialize(_out);
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    dataReturn.Code = 5;
+                    //    dataReturn.Msg = "解析HIS出参失败,请检查HIS出参是否正确";
+                    //    dataReturn.Param = ex.Message;
+                    //}
                 }
                 else
                 {
