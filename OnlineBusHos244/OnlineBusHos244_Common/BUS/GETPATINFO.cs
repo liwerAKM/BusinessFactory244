@@ -19,17 +19,11 @@ namespace OnlineBusHos244_Common.BUS
         }
         public static string Business(string json_in)
         {
-            PubFunc.WriteLogbyPath("GETPATINFO", "入参", "D:\\QHLog", json_in);
-          //string aab = "{ \"infcode\":\"0\",\"inf_refmsgid\":\"null\",\"refmsg_time\":\"20240603160942454\",\"respond_time\":\"20240603160942556\",\"enctype\":\"\",\"signtype\":\"\",\"err_msg\":null,\"output\":{ \"data\":[]} }\r\n";
-          //JObject yb5360 = JObject.Parse(aab);
-          //string kk= yb5360["infcode"].ToString();
-          //yb5360["infcode"] = "123";
+            //PubFunc.WriteLogbyPath("GETPATINFO", "入参", "D:\\QHLog", json_in);
+         
           DataReturn dataReturn = new DataReturn();
             string json_out = "";
-            //XmlDocument doc = new XmlDocument();
-            //doc=QHXmlMode.GetBaseXmlSY("SENDCARDINFO", "0");
-            //string innerxml = doc.OuterXml;
-            //XMLHelper.X_XmlNodeDelete(doc, "BSXml/MsgHeader");
+           
             try
             {
 
