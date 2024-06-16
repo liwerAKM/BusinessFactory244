@@ -93,14 +93,14 @@ namespace OnlineBusHos244_Common.BUS
                 string inxml = doc.InnerXml;
                 string his_rtnxml = "";
 
-                //if (!PubFunc.CALLSERVICE(_in.HOS_ID, inxml, ref his_rtnxml))
-                //{
-                //    dataReturn.Code = 1;
-                //    dataReturn.Msg = his_rtnxml;
-                //    goto EndPoint;
-                //}
-                _out.HIS_RTNXML = "< ROOT >< HEADER >< TYPE > SENDCARDINFO </ TYPE >< CZLX > 0 </ CZLX ></ HEADER >< BODY >< CLBZ > 0 </ CLBZ >< CLJG > [TYPE:SENDCARDINFO]成功 </ CLJG >< BARCODE > 000047458800 </ BARCODE ></ BODY ></ ROOT >".Replace(" ", "");
-                //_out.HIS_RTNXML = his_rtnxml;
+                if (!PubFunc.CALLSERVICE(_in.HOS_ID, inxml, ref his_rtnxml))
+                {
+                    dataReturn.Code = 1;
+                    dataReturn.Msg = his_rtnxml;
+                    goto EndPoint;
+                }
+                //_out.HIS_RTNXML = "< ROOT >< HEADER >< TYPE > SENDCARDINFO </ TYPE >< CZLX > 0 </ CZLX ></ HEADER >< BODY >< CLBZ > 0 </ CLBZ >< CLJG > [TYPE:SENDCARDINFO]成功 </ CLJG >< BARCODE > 000047458800 </ BARCODE ></ BODY ></ ROOT >".Replace(" ", "");
+                _out.HIS_RTNXML = his_rtnxml;
                 try
                 {
                     XmlDocument xmldoc = XMLHelper.X_GetXmlDocument(_out.HIS_RTNXML);

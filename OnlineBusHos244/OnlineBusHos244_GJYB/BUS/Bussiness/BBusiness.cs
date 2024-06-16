@@ -652,7 +652,7 @@ namespace OnlineBusHos244_GJYB.BUS
                 dataReturn.Msg = msg;
                 return dataReturn;
             }
-            chsTran.chsInput2207 = JsonConvert.SerializeObject(inputRoot2207);
+            chsTran.chsInput2207 = JsonConvert.SerializeObject(inputRoot2207.input);
 
 
             chsTran.create_time = DateTime.Now;
@@ -738,7 +738,7 @@ namespace OnlineBusHos244_GJYB.BUS
             string chsInput2204 = "";
             string chsInput2206 = "";
             string CASH_JE = "0";
-            //string chsInput2207 = "";
+            string chsInput2207 = "";
             try
             {
                 XmlDocument xmldoc = XMLHelper.X_GetXmlDocument(his_rtnxml);
@@ -758,7 +758,7 @@ namespace OnlineBusHos244_GJYB.BUS
                     chsInput2203 = dtrev.Rows[0]["chsInput2203"].ToString();
                     chsInput2204 = dtrev.Rows[0]["chsInput2204"].ToString();
                     chsInput2206 = dtrev.Rows[0]["chsInput2206"].ToString();
-                    //chsInput2207 = dtrev.Rows[0]["chsInput2207"].ToString();
+                    chsInput2207 = dtrev.Rows[0]["chsInput2207"].ToString();
                 }
             }
             catch (Exception ex)
@@ -930,18 +930,20 @@ namespace OnlineBusHos244_GJYB.BUS
             chsTran.chsInput2206 = JsonConvert.SerializeObject(inputRoot2206.input);
             chsTran.chsOutput2206 = JsonConvert.SerializeObject(outputRoot2206);
             chsTran.create_time = DateTime.Now;
-            db.Saveable(chsTran).ExecuteCommand();
             #endregion
 
             Models.RT2206.Root rt2206 = outputRoot2206.GetOutput<Models.RT2206.Root>();
 
-            //JObject jin2207 = JObject.Parse(chsInput2207);
-            //jin2207["data"]["mdtrt_id"] = mdtrt_id;
-            //jin2207["data"]["fulamt_ownpay_amt"] = rt2206.setlinfo.fulamt_ownpay_amt;
-            //jin2207["data"]["overlmt_selfpay"] = rt2206.setlinfo.overlmt_selfpay;
-            //jin2207["data"]["preselfpay_amt"] = rt2206.setlinfo.preselfpay_amt;
-            //jin2207["data"]["inscp_scp_amt"] = rt2206.setlinfo.inscp_scp_amt;
+            JObject jin2207 = JObject.Parse(chsInput2207);
+            jin2207["data"]["mdtrt_id"] = mdtrt_id;
+            jin2207["data"]["fulamt_ownpay_amt"] = rt2206.setlinfo.fulamt_ownpay_amt;
+            jin2207["data"]["overlmt_selfpay"] = rt2206.setlinfo.overlmt_selfpay;
+            jin2207["data"]["preselfpay_amt"] = rt2206.setlinfo.preselfpay_amt;
+            jin2207["data"]["inscp_scp_amt"] = rt2206.setlinfo.inscp_scp_amt;
 
+
+
+            db.Saveable(chsTran).ExecuteCommand();
             _out.MDTRT_ID = rt2206.setlinfo.mdtrt_id;
             _out.MEDFEE_SUMAMT = FormatHelper.GetStr(rt2206.setlinfo.medfee_sumamt+FormatHelper.GetDecimal(CASH_JE));
             _out.ACCT_PAY = FormatHelper.GetStr(rt2206.setlinfo.acct_pay);
@@ -1066,15 +1068,15 @@ namespace OnlineBusHos244_GJYB.BUS
             string msg = "";
             string infno = "";
             bool flag = false;
+
+
             //门诊结算【2207】
             infno = "2207";
             Models.InputRoot inputRoot2207 = new Models.InputRoot();
             JObject jin2207 = JObject.Parse(chsInput2207);//优先用JObject
             jin2207["data"]["mdtrt_id"] = chsTran.mdtrt_id;
-
             JObject jin2206 = JObject.Parse(chsTran.chsInput2206);
             jin2207["data"]["chrg_bchno"] = jin2206["input"]["data"]["chrg_bchno"];
-
             flag = CSBHelper.CreateInputRoot(HOS_ID, infno, "", opter_no, insuplc_admdvs, jin2207, ref inputRoot2207, ref msg);
             if (!flag)
             {
@@ -1082,9 +1084,6 @@ namespace OnlineBusHos244_GJYB.BUS
                 dataReturn.Msg = msg;
                 return dataReturn;
             }
-            //调用医保
-
-            
             Models.OutputRoot outputRoot2207 = GlobalVar.YBTrans(HOS_ID, inputRoot2207);
             if (outputRoot2207.infcode != "0")
             {

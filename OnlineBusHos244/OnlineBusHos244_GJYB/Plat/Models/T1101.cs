@@ -38,6 +38,39 @@ namespace OnlineBusHos244_GJYB.Models
         }
     }
 
+    public class T11011
+    {
+        public Data data { get; set; }
+        public Root root { get; set; }
+        /// <summary>
+        /// 输入（节点标识：data）
+        /// </summary>
+        public class Data
+        {
+            /// <summary>
+            /// 01,02,03
+            /// </summary>
+            public string mdtrt_cert_type { get; set; }// 就诊凭证类型
+            /// <summary>
+            /// 就诊凭证编号：就诊凭证类型为“01”时填写电子凭证令牌，为“02”时填写身份证号，为“03”时填写社会保障卡卡号
+            /// </summary>
+            public string mdtrt_cert_no { get; set; }
+            /// <summary>
+            /// 卡识别码：就诊凭证类型为“03”时必填
+            /// </summary>
+            public string card_sn { get; set; }// 卡识别码
+            public string begntime { get; set; }// 开始时间
+            public string psn_cert_type { get; set; }// 人员证件类型
+            public string certno { get; set; }// 证件号码
+            public string psn_name { get; set; }// 人员姓名
+
+        }
+
+        public class Root
+        {
+            public Data data { get; set; }
+        }
+    }
 
     public class RT1101
     {

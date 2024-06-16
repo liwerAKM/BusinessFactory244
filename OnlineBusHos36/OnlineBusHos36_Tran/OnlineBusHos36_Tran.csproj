@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <Reference Include="Alipay.AopSdk.Core">
-      <HintPath>..\..\..\..\..\公司平台\PaaS整合自助机和医保平台包含websocke和http(业务dll需要更新引用命名空间)\commondll\PAY\Alipay.AopSdk.Core.dll</HintPath>
+      <HintPath>G:\项目依赖\长整型依赖DLL\dll引用\Alipay.AopSdk.Core.dll</HintPath>
     </Reference>
     <Reference Include="AopSdk">
       <HintPath>..\..\A0Public\netcoreapp3.1\AopSdk.dll</HintPath>
